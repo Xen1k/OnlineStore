@@ -1,0 +1,10 @@
+.card {
+    &-container {
+        width: 17rem;
+        margin: 10px;
+    }
+    &-image {
+        object-fit: cover;
+        aspect-ratio: 1;
+    }
+}

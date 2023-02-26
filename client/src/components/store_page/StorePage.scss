@@ -1,0 +1,13 @@
+.store {
+    &-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        @media (min-device-width: 480px) {
+            margin: 20px;
+        }
+        @media (max-device-width: 480px) {
+            justify-content: center;
+        }
+    }
+}
