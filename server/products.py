@@ -20,6 +20,14 @@ def add_product():
               save_file_and_get_random_name(request.files.get("mainImage"))])
         return '0'
 
+@products.route('/get-product-by-id', methods=['POST'])
+def get_product_by_id():
+    data = convert_request_data_to_dict(request)
+    with sq.connect('store.sqlite') as con:
+        con.row_factory = dict_factory
+        cur = con.cursor()
+        cur.execute("""SELECT * FROM PRODUCTS WHERE id = ?""", [data])
+        return cur.fetchone()
 
 @products.route('/get-all-products', methods=['GET'])
 def get_all_products():
@@ -28,3 +36,4 @@ def get_all_products():
         cur = con.cursor()
         cur.execute("""SELECT * FROM PRODUCTS""")
         return cur.fetchall()
+

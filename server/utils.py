@@ -2,8 +2,11 @@ import os
 import sqlite3 as sq
 
 from random import randrange
+import ast
 import sys
 
+def convert_request_data_to_dict(axios_data):
+    return ast.literal_eval(next(iter(axios_data.form.to_dict())))
 
 def dict_factory(cursor, row):
     d = {}

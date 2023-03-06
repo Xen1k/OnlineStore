@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
 import StorePageController from './components/store_page/StorePageController';
 import NavbarController from './components/navbar/NavbarController';
 import AddProductController from './components/add_product_page/AddProductController';
+import ProductPageController from './components/product_page/ProductPageController';
 
 const App = (): JSX.Element => {
     useEffect(() => {
@@ -16,6 +17,7 @@ const App = (): JSX.Element => {
                 <Routes>
                     <Route path='/store' element={<StorePageController />} />
                     <Route path='/add-product' element={<AddProductController />} />
+                    <Route path='/product/:id' element={<ProductPageController />} />
                     <Route path='*' element={<Navigate to='/store' replace />} />
                 </Routes>
             </BrowserRouter>

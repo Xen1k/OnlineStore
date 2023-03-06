@@ -1,12 +1,14 @@
+$adaptive-width: 1000px;
+
 .store {
     &-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        @media (min-device-width: 480px) {
+        @media (min-device-width: $adaptive-width) {
             margin: 20px;
         }
-        @media (max-device-width: 480px) {
+        @media (max-device-width: $adaptive-width) {
             justify-content: center;
         }
     }
