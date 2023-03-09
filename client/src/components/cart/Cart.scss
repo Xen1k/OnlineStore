@@ -1,0 +1,41 @@
+$adaptive-width: 1000px;
+
+.cart {
+    &-container {
+        display: flex;
+        justify-content: space-around;
+        @media (min-device-width: $adaptive-width) {
+            flex-direction: row;
+        }
+        @media (max-device-width: $adaptive-width) {
+            flex-direction: column;
+        }
+    }
+    &-sub-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(220, 227, 231);
+        border-radius: 20px;
+        padding: 10px;
+        margin: 20px;
+    }
+    &-form {
+        &-container {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 100%;
+            padding: 20px;
+        }
+        &-field {
+            margin-bottom: 40px;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            max-height: 50px;
+        }
+    }
+}

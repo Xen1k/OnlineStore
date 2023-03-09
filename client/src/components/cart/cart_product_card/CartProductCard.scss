@@ -1,0 +1,47 @@
+$adaptive-width: 1000px;
+
+.cart-card {
+    &-container {
+        display: flex;
+        flex: 1;
+        width: 70%;
+        border-radius: 20px;
+        align-items: center;
+        background-color: #f8f8f8;
+        filter: drop-shadow(0px 0px 10px rgb(131, 131, 131));
+        margin: 20px;
+        @media (min-device-width: $adaptive-width) {
+            flex-direction: row;
+            aspect-ratio: 5;
+        }
+        @media (max-device-width: $adaptive-width) {
+            flex-direction: column;
+        }
+    }
+    &-image {
+        object-fit: cover;
+        aspect-ratio: 1;
+        width: 100px;
+        border-radius: 10px;
+    }
+    &-delete-button {
+        display: flex;
+        border: solid 2px black;
+        aspect-ratio: 1;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        height: 70%;
+        font-weight: bold;
+        font-size: 13px;
+    }
+  
+}
+
+.center-content {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

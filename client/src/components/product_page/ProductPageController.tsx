@@ -1,13 +1,20 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ProductData } from '../../commonTypes';
 import { serverUrl } from '../../preferences';
 import ProductPageView from './ProductPageView';
 import { useParams } from 'react-router-dom';
+import useAppDispatch, { AppDispatch } from '../../hooks/useAppDispatch';
+import { appendProduct } from '../cart/CartSlice';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 const ProductPageController = (): JSX.Element => {
     const [product, setProduct] = useState<ProductData>();
+    const [addToCartButtonText, setAddToCartButtonText] = useState<string>('В корзину');
+    const [onAddToCartPressed, setOnAddToCartPressed] = useState<() => void>(() => () => {});
     const { id } = useParams();
+    const dispatch: AppDispatch = useAppDispatch();
+    const navigate: NavigateFunction = useNavigate();
 
     useEffect(() => {
         const getProductData = async () => {
@@ -19,18 +26,24 @@ const ProductPageController = (): JSX.Element => {
                 })
             ).data;
             setProduct(product);
+            setOnAddToCartPressed(() => () => addToCart(product));
         };
 
         getProductData();
     }, []);
-    
-    const addToCart = () => {
-        console.log("Not implemented");
-    }
+
+    const navigateToCart = () => navigate('/cart');
+    const addToCart = (product: ProductData) => {
+        dispatch(appendProduct(product));
+        setAddToCartButtonText('Добавлено. Перейти в корзину.');
+        setOnAddToCartPressed(() => () => navigateToCart());
+    };
 
     return (
         <>
-            {product && <ProductPageView productData={product} addToCart = {addToCart} />};
+            {product && (
+                <ProductPageView productData={product} onAddToCardPressed={onAddToCartPressed} addToCartButtonText={addToCartButtonText} />
+            )}
         </>
     );
 };

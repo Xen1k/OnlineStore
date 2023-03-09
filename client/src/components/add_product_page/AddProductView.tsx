@@ -39,7 +39,7 @@ const AddProductView: React.FC<IAddProductViewProps> = ({ onSubmit, onInput }) =
                     <Form.Control
                         required
                         onChange={onInput}
-                        maxLength={50}
+                        maxLength={80}
                         style={{ height: 100, resize: 'none' }}
                         as='textarea'
                         name='shortDescription'

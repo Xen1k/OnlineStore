@@ -9,7 +9,7 @@ const NavbarView = (): JSX.Element => (
         <Navbar.Collapse>
             <Nav>
                 <NavlinkWithTooltip navlinkText='Товары' tooltip='Список всех товаров' route='/store' />
-                <NavlinkWithTooltip navlinkText='Корзина' tooltip='Открыть корзину с добавленными товарами' route='/store' />
+                <NavlinkWithTooltip navlinkText='Корзина' tooltip='Открыть корзину с добавленными товарами' route='/cart' />
                 <NavlinkWithTooltip navlinkText='Добавить продукт' tooltip='Добавить новый продукт в магазин' route='/add-product' />
             </Nav>
         </Navbar.Collapse>
